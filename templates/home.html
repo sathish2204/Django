@@ -1,0 +1,113 @@
+<html>
+
+<head>
+
+    <title>Welcome</title>
+
+
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'bootstrap/bootstrap.min.css' %}">
+    <script src="{% static 'Jquery/jquery.js'  %}"></script>
+
+    <script>
+        function updatedata() {
+
+            open('update', '_self', )
+
+        }
+    </script>
+
+
+    <script>
+        function deletedata() {
+
+            open('delete', '_self', )
+
+        }
+    </script>
+
+    <style>
+        .new {
+            padding-left: 30px;
+            padding-right: 30px;
+        }
+        
+        td {
+            padding-left: 30px;
+            padding-right: 30px;
+        }
+        
+        .old {
+            padding-left: 10px;
+        }
+        
+        .b1 {
+            background-color: green;
+            color: white;
+        }
+        
+        .b2 {
+            background-color: red;
+            color: white;
+        }
+    </style>
+</head>
+
+
+<body>
+
+    <div class="well">
+        <h1>Welcome {{name}}....</h1>
+
+    </div>
+
+
+    <h1>Employes</h1>
+    <form action="" autocomplete="on" method="post">
+        {% csrf_token %}Name: <input type="text" name="name"><br><br> Age: <input type="number" name="age"><br><br> Salary: <input type="number" name="salary"><br><br> City: <input type="text" name="city"><br><br>
+        <input type="submit" name="button">
+    </form>
+    <div style="margin-left: 400px;margin-top: -200px;">
+        <table style="border: solid black 2px;width: 500px;height: 200px;">
+            <tr>
+                <th class="new">Id</th>
+                <th class="new">Name</th>
+                <th class="new">Age</th>
+                <th class="new">Salary</th>
+                <th class="new">City</th>
+
+
+            </tr>
+            <tr>
+                <th class="old"> ------------</th>
+                <th class="old"> -------------------------</th>
+                <th class="old"> ------------</th>
+                <th class="old"> -----------------</th>
+                <th class="old"> -----------------</th>
+
+
+            </tr>
+
+            {% for i in obj %}
+            <tr>
+                <td style="padding-left: 40px;">{{i.id}}</td>
+                <td>{{i.name}}</td>
+                <td>{{i.age}}</td>
+                <td>{{i.salary}}</td>
+                <td>{{i.city}}</td>
+
+
+
+                {% endfor %}
+            </tr>
+        </table>
+
+        <td> <button class="b1" onclick="updatedata()">Update</button></td>
+        <td>
+            <button class="b2" onclick="deletedata()">Delete</button></td>
+    </div>
+
+</body>
+
+
+</html>
